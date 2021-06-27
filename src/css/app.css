@@ -5,6 +5,7 @@
 @import 'buttons.css';
 @import 'recipe.css';
 @import 'ingredient-list.css';
+@import 'recipe-edit.css';
 /* *,*::after,*::before{
     padding: 0;
     margin:0;
@@ -18,4 +19,20 @@ body {
 
 .mr-1 {
     margin-right: 5px;
+}
+
+.parent-container{
+   display: grid;
+   grid-template-columns: 50% 50%;
+   grid-template-rows: 100%;
+}
+
+.recipe-container{
+    width: 100%;
+}
+
+.recipe-container{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
 }

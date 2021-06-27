@@ -1,47 +1,60 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import IngredientList from './IngredientList';
+import { RecipeContext } from './App';
 
 
-export default function recipe(props) {
+export default function Recipe(props) {
+    const { handleRecipeDelete } = useContext(RecipeContext);
 
-    /*
-    alternatively,can destructure the props like so 
-    const{ 
-        name, 
-        cookTime,
-        servings,
-        instructions
+
+    const {
+        name,
+        CookTime,
+        Servings,
+        Instructions,
+        ingredients
     } = props
-    */
 
-   const {ingredients} = props;
+
+    useEffect(
+    ()=>{
+       console.log('render');
+
+       return () =>{
+           console.log('unmount');
+       }
+        },
+    [])
+
     return (
         <div className={"recipe"}>
             <div className={"recipe__header"}>
-                <h3 className={"recipe__title"}>{props.name}</h3>
+                <h3 className={"recipe__title"}>{name}</h3>
                 <div>
                     <button className={"btn btn--primary mr-1"}>Edit</button>
-                    <button className={"btn btn--danger"}>Delete</button>
+                    <button className={"btn btn--danger"}
+                        onClick={() => handleRecipeDelete(props.id)}>
+                        Delete</button>
                 </div>
             </div>
-            <div   className={"recipe__row"}>
+            <div className={"recipe__row"}>
                 <span className={"recipe__label"}>Cook Time:</span>
-                <span className={"recipe__value"}>{props.CookTime}</span>
+                <span className={"recipe__value"}>{CookTime}</span>
             </div>
-            <div   className={"recipe_rows"}>
+            <div className={"recipe_rows"}>
                 <span className={"recipe__label"}>Servings:</span>
-                <span className={"recipe__value"}>{props.Servings}</span>
+                <span className={"recipe__value"}>{Servings}</span>
             </div>
-            <div  className={"recipe__row"}>
+            <div className={"recipe__row"}>
                 <span className={"recipe__label"}>Instructions</span>
                 <div className={"recipe__value recipe__value--indented recipe__value--instructions"}>
-                    {props.Instructions}
+                    {Instructions}
                 </div>
             </div>
             <div className={"recipe__row"}>
                 <span className={"recipe__label"}>Ingredients</span>
                 <div className={"recipe__value recipe__value--indented"}>
-                <IngredientList ingredientList= {ingredients}></IngredientList>
+                    <IngredientList ingredientList={ingredients}></IngredientList>
                 </div>
             </div>
 
