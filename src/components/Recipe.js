@@ -5,13 +5,14 @@ import { RecipeContext } from './App';
 
 export default function Recipe(props) {
     const { handleRecipeDelete } = useContext(RecipeContext);
-
+    const {handleEditClick}=useContext(RecipeContext);
 
     const {
+        id,
         name,
-        CookTime,
-        Servings,
-        Instructions,
+        cookTime,
+        servings,
+        instructions,
         ingredients
     } = props
 
@@ -31,24 +32,27 @@ export default function Recipe(props) {
             <div className={"recipe__header"}>
                 <h3 className={"recipe__title"}>{name}</h3>
                 <div>
-                    <button className={"btn btn--primary mr-1"}>Edit</button>
+                    <button className={"btn btn--primary mr-1"}
+                     onClick={()=>{handleEditClick(id)}
+                    }>Edit</button>
+                    
                     <button className={"btn btn--danger"}
-                        onClick={() => handleRecipeDelete(props.id)}>
+                        onClick={() => handleRecipeDelete(id)}>
                         Delete</button>
                 </div>
             </div>
             <div className={"recipe__row"}>
                 <span className={"recipe__label"}>Cook Time:</span>
-                <span className={"recipe__value"}>{CookTime}</span>
+                <span className={"recipe__value"}>{cookTime}</span>
             </div>
             <div className={"recipe_rows"}>
                 <span className={"recipe__label"}>Servings:</span>
-                <span className={"recipe__value"}>{Servings}</span>
+                <span className={"recipe__value"}>{servings}</span>
             </div>
             <div className={"recipe__row"}>
                 <span className={"recipe__label"}>Instructions</span>
                 <div className={"recipe__value recipe__value--indented recipe__value--instructions"}>
-                    {Instructions}
+                    {instructions}
                 </div>
             </div>
             <div className={"recipe__row"}>

@@ -6,13 +6,14 @@
 @import 'recipe.css';
 @import 'ingredient-list.css';
 @import 'recipe-edit.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap');
 /* *,*::after,*::before{
     padding: 0;
     margin:0;
 } */
 
 body {
-    font-family: 'Roboto Mono', monospace;
+    font-family: 'Inter', sans-serif;
     padding: 0;
     margin: 0;
 }
@@ -29,10 +30,8 @@ body {
 
 .recipe-container{
     width: 100%;
+    box-sizing: border-box;
 }
 
-.recipe-container{
-    width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
-}
+
+

@@ -9,7 +9,12 @@ const LOCAL_STORAGE_KEY = 'cookingWithReact.recipes';
 export const RecipeContext = React.createContext();
 
 function App() {
+
+
+  const [selectedRecipeId,setSelectedRecipeId]=useState();//don't want any defualt value.
   const [recipes, setRecipes] = useState(recipeSamples);
+  let selectedRecipe=recipes.find(recipe=>recipe.id===selectedRecipeId);
+  console.log(selectedRecipe); 
 
 
   useEffect(
@@ -28,7 +33,8 @@ function App() {
 
   const recipeContextValue = {
     handleRecipesAdd,
-    handleRecipeDelete
+    handleRecipeDelete,
+    handleEditClick
   }
 
   function handleRecipesAdd() {
@@ -40,7 +46,7 @@ function App() {
       Servings: "1",
       Instructions: "Instruc.",
       ingredients: [{
-        id: 1, name: 'Name', amount: "1 tbs"
+        id: uuid(), name: 'Name', amount: "1 tbs"
       }]
     }
 
@@ -51,20 +57,26 @@ function App() {
   function handleRecipeDelete(id) {
     setRecipes(recipes.filter(recipe => recipe.id !== id));
   }
+  
+  function handleEditClick(id){
+    setSelectedRecipeId(id);
+   
+  }
 
+  function handleRecipeChange(){
+    
+  }
 
   return (
     <div className={"parent-container"}>
       <RecipeContext.Provider value={recipeContextValue} >
-
-
         <div className={"recipe-container"}>
           <RecipeList recipes={recipes} />
         </div>
 
 
         <div className={"recipeedit-container"}>
-          <RecipeEdit />
+        {selectedRecipe && <RecipeEdit recipe={selectedRecipe} /> }  
         </div>
       </RecipeContext.Provider>
     </div>
@@ -79,9 +91,9 @@ const recipeSamples = [
 
     id: 1,
     name: "Plain Chicken",
-    CookTime: "1:45",
-    Servings: 3,
-    Instructions: "1.Put Salt On Chicken \n2.Put Chicken in Oven \n3.Eat Chicken",
+    cookTime: "1:45",
+    servings: 3,
+    instructions: "1.Put Salt On Chicken \n2.Put Chicken in Oven \n3.Eat Chicken",
     ingredients: [
       {
         id: 1,
@@ -99,9 +111,9 @@ const recipeSamples = [
 
     id: 2,
     name: "Pork Chicken",
-    CookTime: "1:45",
-    Servings: 3,
-    Instructions: "1.Put paparika on pork \n2.Put Pork in Oven \n3.Eat Pork",
+    cookTime: "1:45",
+    servings: 3,
+    instructions: "1.Put paparika on pork \n2.Put Pork in Oven \n3.Eat Pork",
     ingredients: [
       {
         id: 1,
