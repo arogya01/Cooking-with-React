@@ -42,9 +42,9 @@ function App() {
 
       id: uuid(),
       name: "New",
-      CookTime: "1:45",
-      Servings: "1",
-      Instructions: "Instruc.",
+      cookTime: "1:45",
+      servings: "1",
+      instructions: "Instruc.",
       ingredients: [{
         id: uuid(), name: 'Name', amount: "1 tbs"
       }]
@@ -63,9 +63,7 @@ function App() {
    
   }
 
-  function handleRecipeChange(){
-    
-  }
+  
 
   return (
     <div className={"parent-container"}>
@@ -96,12 +94,12 @@ const recipeSamples = [
     instructions: "1.Put Salt On Chicken \n2.Put Chicken in Oven \n3.Eat Chicken",
     ingredients: [
       {
-        id: 1,
+        id: uuid(),
         name: 'chicken',
         amount: '2 Pounds',
       },
       {
-        id: 2,
+        id: uuid(),
         name: 'salt',
         amount: '1 tbs',
       }
@@ -116,12 +114,12 @@ const recipeSamples = [
     instructions: "1.Put paparika on pork \n2.Put Pork in Oven \n3.Eat Pork",
     ingredients: [
       {
-        id: 1,
+        id:  uuid(),
         name: 'Pork',
         amount: '2 Pounds',
       },
       {
-        id: 2,
+        id:  uuid(),
         name: 'poprika',
         amount: '2 Pounds',
       }

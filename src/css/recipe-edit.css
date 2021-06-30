@@ -3,10 +3,8 @@
 }
 
 .recipe-edit__details-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
-  row-gap: 20px;
+  display: flex;
+  flex-flow: column wrap;
 }
 
 .recipe-edit__remove-button-container {
@@ -20,6 +18,7 @@
 
 .recipe-edit__label {
   font-weight: bold;
+  padding: 20px 10px;
 }
 
 .recipe-edit__input {
