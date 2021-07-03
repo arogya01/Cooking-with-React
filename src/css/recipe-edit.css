@@ -18,7 +18,7 @@
 
 .recipe-edit__label {
   font-weight: bold;
-  padding: 20px 10px;
+  padding: 10px 10px;
 }
 
 .recipe-edit__input {
@@ -35,7 +35,9 @@
 }
 
 
-textarea{
-    resize: none;
-    height: 200px;
+
+  
+  textarea.recipe-edit__input{
+  resize: none;
+  height: 200px;
 }
